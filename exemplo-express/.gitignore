@@ -1,0 +1,3 @@
+/node_modules
+# sempre ignore a pasta node_modules 
+# pois ela contém que não é seu
