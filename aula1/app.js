@@ -21,6 +21,8 @@ app.use('/cpf/:cpf', ( req , res ) => {
     let cpf = req.params.cpf;
     //fazer essa parte enviar no repositorio
     res.send('Validador de cpf');
+
+    //fffff
 } );
 
 
