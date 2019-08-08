@@ -17,13 +17,30 @@ app.use('/inverter/:str', ( req , res ) => {
     res.json(str);
  } );
 
-app.use('/cpf/:cpf', ( req , res ) => { 
+ app.use('/cpf/:cpf', (req, res) => { 
     let cpf = req.params.cpf;
-    //fazer essa parte enviar no repositorio
-    res.send('Validador de cpf');
+    let soma = 0;
+    let resto;
+    soma = 0;
 
-    //fffff
-} );
+  if (cpf == "00000000000") res.send(false);
+    for (i=1; i<=9; i++) 
+    soma = soma + parseInt(cpf.substring(i-1, i)) * (11 - i);
+    resto = (soma * 10) % 11;
+   
+    if ((resto == 10) || (resto == 11))  resto = 0;
+        if (resto != parseInt(cpf.substring(9, 10)) ) res.send(false);
+    
+    soma = 0;
+        for (i = 1; i <= 10; i++)
+     soma = soma + parseInt(cpf.substring(i-1, i)) * (12 - i);
+     resto = (soma * 10) % 11;
+   
+    if ((resto == 10) || (resto == 11))  resto = 0;
+     if (resto != parseInt(cpf.substring(10, 11) ) ) res.send(false);
+     res.send(true);
+     
+});
 
 
 
