@@ -26,12 +26,12 @@ describe('Testa o serviço de inversão de strings', () => {
         // resultado = resposta.body.resultado;
         ({ resultado } = resposta.body);
         expect(resultado).toBe('b');
-        str = 'Sidney';
+        str = 'teste';
         resposta =
             await requisicao(app).get(`/inverter/${str}`);
         // resultado = resposta.body.resultado;
         ({ resultado } = resposta.body);
-        expect(resultado).toBe('yendiS');
+        expect(resultado).toBe('etset');
     });
 });
 
