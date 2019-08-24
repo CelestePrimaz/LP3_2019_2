@@ -1,7 +1,11 @@
 const express = require('express');
+
+//Midddlewares
 const logger = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+
+const rotasListas = require('./routes/listas');
 
 const app = express();
 
@@ -21,5 +25,10 @@ app.use(cors());
  * em formato JSON..
  */
 app.use(bodyParser.json() );
+
+/**
+ * Registra as rotas relacionadas a listas
+ */
+app.use(rotasListas);
 
 module.exports = app;
