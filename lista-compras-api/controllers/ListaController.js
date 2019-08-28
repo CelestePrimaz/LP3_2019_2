@@ -1,102 +1,29 @@
  /**
   * Lista de testes apenas para prototipação 
   */
- const listas = [
-    {
-        _id: '1',
-        nome: 'Mercado semanal',
-        itens: [
-            {
-                _id: '1',
-                descricao: 'Feijão Carioca',
-                unidade: 'kg',
-                quantidade: 1
-            },
-            {
-                _id: '2',
-                descricao: 'Arroz Tipo 1',
-                unidade: 'kg',
-                quantidade: 1
-            },
-            {
-                _id: '3',
-                descricao: 'Contra-Filé',
-                unidade: 'kg',
-                quantidade: 1
-            },
-            {
-                _id: '4',
-                descricao: 'Ovos',
-                unidade: 'dúzia',
-                quantidade: 2
-            },
-            {
-                _id: '5',
-                descricao: 'Azeite de Oliva',
-                unidade: 'litro',
-                quantidade: 0.5
-            }
-        ]
-    },
-    {
-        _id: '2',
-        nome: 'Farmácia mensal',
-        itens: [
-            {
-                _id: '1',
-                descricao: 'Desodorante Aerosol',
-                unidade: 'vasilhame',
-                quantidade: 3
-            },
-            {
-                _id: '2',
-                descricao: 'Sabonete',
-                unidade: 'unidade',
-                quantidade: 5
-            }
-        ]
-    },
-    {
-        _id: '3',
-        nome: 'Feira do fim de semana',
-        itens: [
-            {
-                _id: '1',
-                descricao: 'Banana Nanica',
-                unidade: 'dúzia',
-                quantidade: 1
-            },
-            {
-                _id: '2',
-                descricao: 'Maçã Fuji',
-                unidade: 'kg',
-                quantidade: 1
-            },
-            {
-                _id: '3',
-                descricao: 'Tomate Italiano',
-                unidade: 'kg',
-                quantidade: 1
-            },
-            {
-                _id: '4',
-                descricao: 'Rúcula',
-                unidade: 'maço',
-                quantidade: 3
-            },
-            {
-                _id: '5',
-                descricao: 'Alho',
-                unidade: 'grama',
-                quantidade: 100
-            }
-        ]
-    }
-];
+
+const Lista = require('../models/Lista');
+
+let listas = [];
 
 const controller = {
     //Arrow function
-    recuperarTodas: (req, res) => res.json(listas)
+    recuperarTodas: (req, res) => res.json(listas),
+    salvar: (req, res) => {
+        const nome = req.body.nome;
+
+        /**
+         * Verifica se foi informado
+         * o nome da lista
+         */
+        if(nome){
+            let lista = new Lista (nome);
+            listas.push(lista);
+            res.status(201).json(lista);
+        }else{
+            res.status(400).json({mensagemErro: 'Nome da lista não informado'});
+        }
+    }
     
 };
 

@@ -29,6 +29,6 @@ app.use(bodyParser.json() );
 /**
  * Registra as rotas relacionadas a listas
  */
-app.use(rotasListas);
+app.use('/listas', rotasListas);
 
 module.exports = app;

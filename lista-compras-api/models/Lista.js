@@ -1,9 +1,10 @@
 class Lista {
-    constructor(){
+    
+    constructor(nome){
         this._id = ` ${ new Date().getMilliseconds() } `;
-        this.nome = ' ';
-        this.itens = [ ];
-        
+        this.nome = nome ;
+        this.itens = [];
+
     }
 }
 module.exports = Lista;
