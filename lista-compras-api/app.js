@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 
 const rotasListas = require('./routes/listas');
 
+require('./databases/db');
+
 const app = express();
 
 app.use(logger('dev'));
