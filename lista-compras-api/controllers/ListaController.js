@@ -1,7 +1,16 @@
 const Lista = require('../models/Lista');
+const item = require('../models/Item');
 
 const controller = {
     
+    recuperarItens: async (req, res) =>{
+        const { filtro } = req.body;
+        const itens = await item.find({
+             descricao: {'$regex': filtro, '$options': 'i' } 
+
+        });
+        return res.json(itens);
+    },
 
     salvar: (req, res) => {
         const {nome } = req.body;

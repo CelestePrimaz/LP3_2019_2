@@ -1,4 +1,4 @@
-const { Item } = require('./db');
+
 
 const itens = [
     {
@@ -402,4 +402,13 @@ const itens = [
         "descricao": "Vinho"
     }
 ];
+
+require('./db');
+const Item = require ('../models/Item');
+
+Item
+    .insertMany(
+        itens,
+        (erro, itensSalvos) => console.log('Itens salvos')
+    );
 
